@@ -18,3 +18,7 @@ name VARCHAR(100),
 age INT, 
 grade INT
 );
+
+-- Check existing table
+
+EXEC sp_help 'student'
