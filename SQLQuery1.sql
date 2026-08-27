@@ -9,3 +9,12 @@ CREATE DATABASE demo
 -- Selecting a DB
 USE school_db
 SELECT DB_NAME()
+
+-- Creating a table
+
+CREATE TABLE student
+(student_id INT, 
+name VARCHAR(100), 
+age INT, 
+grade INT
+);
