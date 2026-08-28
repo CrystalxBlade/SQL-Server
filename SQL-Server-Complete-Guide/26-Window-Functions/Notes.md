@@ -1,15 +1,9 @@
 # Window Functions
 
-Window functions calculate values across related rows without collapsing them into one row per group.
+A window function calculates a value using a set of related rows **without collapsing those rows into one result row per group**.
 
-Common functions:
-- `ROW_NUMBER()`
-- `RANK()`
-- `DENSE_RANK()`
-- `SUM() OVER()`
-- `AVG() OVER()`
-
-## Example
+## ROW_NUMBER()
+Gives each row a sequential number.
 ```sql
 SELECT
     name,
@@ -17,3 +11,14 @@ SELECT
     ROW_NUMBER() OVER (ORDER BY grade DESC) AS row_num
 FROM student;
 ```
+
+## RANK()
+Assigns rankings. Tied values receive the same rank, and later ranks can have gaps.
+
+## DENSE_RANK()
+Also gives tied values the same rank, but does not leave gaps after ties.
+
+## SUM() OVER()
+Can calculate a running or windowed total while keeping individual rows.
+
+Window functions are especially useful for rankings, running totals, comparisons with neighboring rows, and reporting.

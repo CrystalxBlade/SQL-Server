@@ -1,11 +1,20 @@
 # DELETE
 
-`DELETE` removes rows from a table.
+`DELETE` is used to **remove rows from a table**.
 
-## Example
+## Delete one row
 ```sql
 DELETE FROM student
 WHERE student_id = 1;
 ```
 
-Without a `WHERE` clause, all rows can be deleted.
+The row matching `student_id = 1` is removed.
+
+## Important warning
+```sql
+DELETE FROM student;
+```
+Without `WHERE`, all rows in the table can be deleted.
+
+`DELETE` removes rows but keeps the table itself.
+`DROP TABLE` removes the table itself.

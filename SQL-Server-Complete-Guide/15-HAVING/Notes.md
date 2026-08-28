@@ -1,6 +1,6 @@
 # HAVING
 
-`HAVING` filters groups created by `GROUP BY`.
+`HAVING` **filters groups created by `GROUP BY`**.
 
 ## Example
 ```sql
@@ -10,4 +10,19 @@ GROUP BY grade
 HAVING COUNT(*) > 1;
 ```
 
-`WHERE` filters rows before grouping, while `HAVING` filters groups after grouping.
+This returns only grades that have more than one student.
+
+## WHERE vs HAVING
+
+`WHERE` filters individual rows **before grouping**.
+
+`HAVING` filters groups **after grouping**.
+
+Example:
+```sql
+SELECT grade, COUNT(*)
+FROM student
+WHERE age >= 18
+GROUP BY grade
+HAVING COUNT(*) > 1;
+```
