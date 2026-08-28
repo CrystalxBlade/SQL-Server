@@ -38,6 +38,7 @@ VALUES (104, 'Hornet', 26, 14)
 
 SELECT * FROM student
 SELECT name FROM student
+SELECT * FROM student WHERE student_id = 101
 
 -- Update 
 
@@ -49,3 +50,7 @@ WHERE student_id = 103
 
 DELETE FROM student
 WHERE student_id = 104
+
+-- TRUNCATE
+
+TRUNCATE table student
