@@ -54,3 +54,9 @@ SELECT * FROM employee WHERE hire_date > '2020-12-31'
 
 SELECT DISTINCT department FROM employee 
 
+-- ORDER BY -- 
+
+SELECT * FROM employee ORDER BY salary DESC
+SELECT * FROM employee ORDER BY hire_date
+SELECT * FROM employee ORDER BY fname
+SELECT department, fname FROM employee ORDER BY department, fname
