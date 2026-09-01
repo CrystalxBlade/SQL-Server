@@ -36,3 +36,21 @@ VALUES
 
 
 SELECT * FROM employee
+
+INSERT INTO employee
+(fname, lname, email, job_title, department, city)
+VALUES 
+('Crystal','Blade','crystalxblade@gmail.com', 'Game Dev', 'Tech', 'Noida');
+
+-- WHERE Clause --
+
+SELECT * FROM employee WHERE emp_id = 105
+SELECT * FROM employee WHERE department = 'Sales'
+SELECT * FROM employee WHERE department != 'Sales'
+SELECT * FROM employee WHERE salary > 85000
+SELECT * FROM employee WHERE hire_date > '2020-12-31'
+
+-- Distinct --
+
+SELECT DISTINCT department FROM employee 
+
