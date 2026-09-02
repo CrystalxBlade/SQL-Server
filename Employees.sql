@@ -60,3 +60,16 @@ SELECT * FROM employee ORDER BY salary DESC
 SELECT * FROM employee ORDER BY hire_date
 SELECT * FROM employee ORDER BY fname
 SELECT department, fname FROM employee ORDER BY department, fname
+
+-- LIKE --
+
+SELECT * FROM employee WHERE department LIKE '%Human%'
+SELECT * FROM employee WHERE fname LIKE 'A%'
+SELECT * FROM employee WHERE fname LIKE '%n'
+SELECT * FROM employee WHERE fname LIKE '[ADRZ]%'
+SELECT * FROM employee WHERE fname LIKE '[^A]%'
+SELECT * FROM employee WHERE fname LIKE '_a%'
+SELECT * FROM employee WHERE fname LIKE '____'
+
+
+
