@@ -71,5 +71,10 @@ SELECT * FROM employee WHERE fname LIKE '[^A]%'
 SELECT * FROM employee WHERE fname LIKE '_a%'
 SELECT * FROM employee WHERE fname LIKE '____'
 
+-- TOP --
 
+SELECT TOP 3 * FROM employee
+SELECT TOP 3 * FROM employee ORDER BY salary DESC
+SELECT TOP 5 * FROM employee ORDER BY hire_date DESC
+SELECT TOP 1 * FROM employee WHERE department = 'Marketing'
 
