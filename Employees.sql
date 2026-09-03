@@ -109,4 +109,14 @@ SELECT * FROM employee WHERE department NOT IN ('Design', 'Management', 'Human R
 SELECT * FROM employee WHERE salary BETWEEN 70000 AND 90000
 
 
+-- CASE -- 
+
+SELECT fname, lname, salary,
+
+CASE
+    WHEN salary > 100000 THEN 'High Earner'
+    WHEN salary BETWEEN 80000 AND 100000 THEN 'Medium Earner'
+    ELSE 'Standard Earner'
+END as sal_cat
+FROM employee
 
