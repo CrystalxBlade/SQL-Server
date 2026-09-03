@@ -94,7 +94,15 @@ SELECT * FROM employee WHERE salary >= 75000 AND department = 'Sales'
 SELECT * FROM employee WHERE salary = 75000 OR department = 'Design'
 SELECT * FROM employee WHERE salary = 75000 OR department = 'TECH' OR city = 'Banglore'
 
+
 -- IN --
 
 SELECT * FROM employee WHERE department IN ('Design', 'Management', 'Human Resources')
+
+
+-- BETWEEEN --
+
+SELECT * FROM employee WHERE salary BETWEEN 70000 AND 90000
+
+
 
