@@ -42,6 +42,7 @@ INSERT INTO employee
 VALUES 
 ('Crystal','Blade','crystalxblade@gmail.com', 'Game Dev', 'Tech', 'Noida');
 
+
 -- WHERE Clause --
 
 SELECT * FROM employee WHERE emp_id = 105
@@ -50,9 +51,11 @@ SELECT * FROM employee WHERE department != 'Sales'
 SELECT * FROM employee WHERE salary > 85000
 SELECT * FROM employee WHERE hire_date > '2020-12-31'
 
+
 -- Distinct --
 
 SELECT DISTINCT department FROM employee 
+
 
 -- ORDER BY -- 
 
@@ -60,6 +63,7 @@ SELECT * FROM employee ORDER BY salary DESC
 SELECT * FROM employee ORDER BY hire_date
 SELECT * FROM employee ORDER BY fname
 SELECT department, fname FROM employee ORDER BY department, fname
+
 
 -- LIKE --
 
@@ -71,10 +75,26 @@ SELECT * FROM employee WHERE fname LIKE '[^A]%'
 SELECT * FROM employee WHERE fname LIKE '_a%'
 SELECT * FROM employee WHERE fname LIKE '____'
 
+
 -- TOP --
 
 SELECT TOP 3 * FROM employee
 SELECT TOP 3 * FROM employee ORDER BY salary DESC
 SELECT TOP 5 * FROM employee ORDER BY hire_date DESC
 SELECT TOP 1 * FROM employee WHERE department = 'Marketing'
+
+
+-- AND --
+
+SELECT * FROM employee WHERE salary >= 75000 AND department = 'Sales'
+
+
+-- OR --
+
+SELECT * FROM employee WHERE salary = 75000 OR department = 'Design'
+SELECT * FROM employee WHERE salary = 75000 OR department = 'TECH' OR city = 'Banglore'
+
+-- IN --
+
+SELECT * FROM employee WHERE department IN ('Design', 'Management', 'Human Resources')
 
