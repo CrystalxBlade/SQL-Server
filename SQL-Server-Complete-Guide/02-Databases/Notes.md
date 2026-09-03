@@ -33,3 +33,9 @@ DROP DATABASE school_db;
 
 ## Important
 Your SQL Server connection and your database are different things. You normally keep one connection to your SQL Server instance and use `USE database_name` to work with different databases.
+
+## Schema
+Schema is the overall design or blueprint of the database. It defines the structure of the database, including the table names, column names, data types, relationhips and constraints.
+
+## Instance
+Instance is the actual data stored in the database at a particular point of time.

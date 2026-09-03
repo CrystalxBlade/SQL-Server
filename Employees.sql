@@ -100,6 +100,10 @@ SELECT * FROM employee WHERE salary = 75000 OR department = 'TECH' OR city = 'Ba
 SELECT * FROM employee WHERE department IN ('Design', 'Management', 'Human Resources')
 
 
+-- NOT IN --
+
+SELECT * FROM employee WHERE department NOT IN ('Design', 'Management', 'Human Resources')
+
 -- BETWEEEN --
 
 SELECT * FROM employee WHERE salary BETWEEN 70000 AND 90000
