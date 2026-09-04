@@ -120,3 +120,27 @@ CASE
 END as sal_cat
 FROM employee
 
+
+-- Calculate Bonus --
+
+SELECT fname, lname, department, salary,
+CASE
+    WHEN department IN ('Sales', 'Marketing') THEN salary * 0.10
+    WHEN department = 'Tech' THEN salary * 0.12
+    ELSE salary * 0.05
+END as bonus
+
+FROM employee
+
+
+-- Aggregate Functions -- 
+
+SELECT COUNT(emp_id) FROM employee
+SELECT MIN(salary) FROM employee
+SELECT MAX(salary) FROM employee
+SELECT AVG(salary) FROM employee
+SELECT SUM(salary) FROM employee
+
+
+-- GROUP BY --
+
