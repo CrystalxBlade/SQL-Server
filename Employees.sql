@@ -144,3 +144,9 @@ SELECT SUM(salary) FROM employee
 
 -- GROUP BY --
 
+SELECT department FROM employee GROUP BY department
+SELECT department, COUNT(emp_id) as employees FROM employee GROUP BY department
+SELECT city, COUNT(emp_id) as emp FROM employee GROUP BY city
+SELECT department, SUM(salary) FROM employee GROUP BY department
+SELECT department, AVG(salary) as amount FROM employee GROUP BY department
+
