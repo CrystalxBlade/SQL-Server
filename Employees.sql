@@ -156,6 +156,17 @@ SELECT department, AVG(salary) as amount FROM employee GROUP BY department
 SELECT department, city, COUNT(emp_id) as workers FROM employee GROUP BY department, City 
 
 
+-- GROUP BY ROLLUP --
+
+SELECT department, COUNT(emp_id) as emp 
+FROM employee 
+GROUP BY ROLLUP(department)
+
+SELECT department, SUM(salary)
+FROM employee 
+GROUP BY ROLLUP(department)
+
+
 -- HAVING Clause --
 
 SELECT department, COUNT(emp_id) 
