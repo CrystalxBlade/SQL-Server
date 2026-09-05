@@ -150,3 +150,23 @@ SELECT city, COUNT(emp_id) as emp FROM employee GROUP BY city
 SELECT department, SUM(salary) FROM employee GROUP BY department
 SELECT department, AVG(salary) as amount FROM employee GROUP BY department
 
+
+-- Multi Level Grouping -- 
+
+SELECT department, city, COUNT(emp_id) as workers FROM employee GROUP BY department, City 
+
+
+-- HAVING Clause --
+
+SELECT department, COUNT(emp_id) 
+FROM employee 
+GROUP BY department HAVING COUNT(emp_id) > 2
+
+
+SELECT job_title, AVG(salary)
+FROM employee 
+GROUP BY job_title HAVING AVG(salary) > 90000
+
+SELECT department, SUM(salary) as total
+FROM employee 
+GROUP BY department HAVING SUM(salary) > 200000
