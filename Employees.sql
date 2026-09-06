@@ -193,5 +193,25 @@ ORDER BY department
 
 -- SUB QUERIES --
 
-SELECT AVG(salary) FROM employee
-SELECT * FROM employee WHERE salary > 91625
+
+-- 1 Single row --
+SELECT emp_id, fname, lname, salary 
+FROM employee
+WHERE salary > (SELECT AVG(salary) FROM employee)
+
+-- 2 Multiple row --
+SELECT * FROM employee 
+WHERE department IN 
+(SELECT department FROM employee WHERE city = 'Mumbai')
+
+
+-- 3 Correlated --
+SELECT * FROM employee e1
+WHERE salary = (
+SELECT MAX(salary) FROM employee e2
+WHERE e2.department = e1.department
+)
+
+
+
+
