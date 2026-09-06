@@ -181,3 +181,17 @@ GROUP BY job_title HAVING AVG(salary) > 90000
 SELECT department, SUM(salary) as total
 FROM employee 
 GROUP BY department HAVING SUM(salary) > 200000
+
+
+-- COALESCE --
+
+SELECT department, COALESCE(city,'Total') as city, COUNT(emp_id)
+FROM employee
+GROUP BY ROLLUP (department, city)
+ORDER BY department
+
+
+-- SUB QUERIES --
+
+SELECT AVG(salary) FROM employee
+SELECT * FROM employee WHERE salary > 91625
