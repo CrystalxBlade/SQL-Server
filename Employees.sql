@@ -213,5 +213,11 @@ WHERE e2.department = e1.department
 )
 
 
+-- INLINE SUB QUERIES -- 
 
-
+SELECT department, avg_salary
+FROM (
+     SELECT department, AVG(salary) as avg_salary FROM employee
+     GROUP BY department
+) AS dept_avg
+WHERE avg_salary > 90000 
