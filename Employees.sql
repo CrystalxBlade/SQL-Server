@@ -221,3 +221,13 @@ FROM (
      GROUP BY department
 ) AS dept_avg
 WHERE avg_salary > 90000 
+
+
+-- CONCAT -- 
+
+SELECT CONCAT(fname,' ', lname) as full_name FROM employee
+
+-- CONCAT_WS --
+
+SELECT CONCAT_WS(' : ', 'One', 'Two', 'Three', 'Four', 'Five', 'Six')
+SELECT CONCAT_WS(' , ', emp_id, lname, department) FROM employee
