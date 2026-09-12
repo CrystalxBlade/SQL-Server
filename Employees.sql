@@ -231,3 +231,15 @@ SELECT CONCAT(fname,' ', lname) as full_name FROM employee
 
 SELECT CONCAT_WS(' : ', 'One', 'Two', 'Three', 'Four', 'Five', 'Six')
 SELECT CONCAT_WS(' , ', emp_id, lname, department) FROM employee
+
+
+-- SUBSTRING --
+
+SELECT SUBSTRING('Crystal x Blade',2,5)
+
+
+-- REPLACE --
+
+SELECT REPLACE('Crystal x Blade','Crystal','Skull')
+SELECT REPLACE(department, 'Human Resources', 'HR') as dept FROM employee
+
