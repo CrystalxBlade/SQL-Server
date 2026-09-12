@@ -255,3 +255,17 @@ SELECT LEN(email) as email_length FROM employee
 
 SELECT UPPER(fname) FROM employee
 SELECT LOWER(lname) FROM employee
+
+-- LEFT RIGHT --
+
+SELECT LEFT('ABCDEFGH', 4)
+SELECT RIGHT('ABCDEFGH', 2)
+
+-- TRIM --
+
+SELECT TRIM('   BLADE   ')
+
+-- CHARINDEX --
+
+SELECT CHARINDEX('OM','THOMAS')
+
