@@ -237,9 +237,21 @@ SELECT CONCAT_WS(' , ', emp_id, lname, department) FROM employee
 
 SELECT SUBSTRING('Crystal x Blade',2,5)
 
-
 -- REPLACE --
 
 SELECT REPLACE('Crystal x Blade','Crystal','Skull')
 SELECT REPLACE(department, 'Human Resources', 'HR') as dept FROM employee
 
+-- REVERSE --
+
+SELECT REVERSE('CRYSTAL')
+
+-- LENGTH --
+
+SELECT LEN('Crystal x Blade')
+SELECT LEN(email) as email_length FROM employee
+
+-- UPPER LOWER --
+
+SELECT UPPER(fname) FROM employee
+SELECT LOWER(lname) FROM employee
