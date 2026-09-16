@@ -269,3 +269,8 @@ SELECT TRIM('   BLADE   ')
 
 SELECT CHARINDEX('OM','THOMAS')
 
+SELECT CONCAT_WS(':',emp_id, fname, lname, department ) 
+FROM employee WHERE emp_id = 101
+
+SELECT CONCAT_WS(':',emp_id, CONCAT(fname, ' ', lname), department) 
+FROM employee WHERE emp_id = 102
