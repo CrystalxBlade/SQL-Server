@@ -232,6 +232,17 @@ SELECT CONCAT(fname,' ', lname) as full_name FROM employee
 SELECT CONCAT_WS(' : ', 'One', 'Two', 'Three', 'Four', 'Five', 'Six')
 SELECT CONCAT_WS(' , ', emp_id, lname, department) FROM employee
 
+SELECT CONCAT_WS(':',emp_id, fname, lname, department ) 
+FROM employee WHERE emp_id = 101
+
+SELECT CONCAT_WS(':',emp_id, CONCAT(fname, ' ', lname), department) 
+FROM employee WHERE emp_id = 102
+
+SELECT CONCAT_WS(':', fname, UPPER(department) ) 
+FROM employee WHERE emp_id = 104
+
+SELECT emp_id, fname, LEFT(department,1) as Dep FROM employee 
+
 
 -- SUBSTRING --
 
@@ -269,8 +280,3 @@ SELECT TRIM('   BLADE   ')
 
 SELECT CHARINDEX('OM','THOMAS')
 
-SELECT CONCAT_WS(':',emp_id, fname, lname, department ) 
-FROM employee WHERE emp_id = 101
-
-SELECT CONCAT_WS(':',emp_id, CONCAT(fname, ' ', lname), department) 
-FROM employee WHERE emp_id = 102
