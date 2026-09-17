@@ -297,3 +297,18 @@ SELECT DAY(GETDATE())
 SELECT FORMAT(GETDATE(), 'MM/dd/yyyy')
 SELECT FORMAT(GETDATE(), 'MM-dd-yyyy')
 SELECT FORMAT(GETDATE(), 'dd-yyyy-MM')
+
+
+SELECT fname, lname, hire_date,
+DATEADD(YEAR, 5, hire_date) as aniversary_date
+FROM employee
+
+SELECT * FROM employee WHERE MONTH(hire_date) = 3 
+
+SELECT fname, lname,
+YEAR(hire_date) as year,
+MONTH(hire_date) as month,
+DAY(hire_date) as day
+FROM employee
+
+SELECT fname, lname, FORMAT(hire_date,'MM/dd/yyyy') as hire_date FROM employee
