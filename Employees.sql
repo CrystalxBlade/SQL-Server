@@ -325,7 +325,19 @@ ADD phone VARCHAR(15)
 ALTER TABLE employee
 DROP COLUMN phone 
 
+ALTER TABLE employee
+ALTER COLUMN lname VARCHAR(100) NOT NULL
 
+EXEC sp_help employee
 
+-- Changing column name --
 
+EXEC sp_rename
+'employee.fname', 'first_name', 'COLUMN';
 
+-- Changing table name --
+
+EXEC sp_rename
+'employee', 'staff'
+
+SELECT * FROM staff
