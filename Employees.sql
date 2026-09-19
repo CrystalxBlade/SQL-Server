@@ -312,3 +312,20 @@ DAY(hire_date) as day
 FROM employee
 
 SELECT fname, lname, FORMAT(hire_date,'MM/dd/yyyy') as hire_date FROM employee
+
+
+
+-- ALTERING TABLE --
+
+SELECT * FROM employee
+
+ALTER TABLE employee
+ADD phone VARCHAR(15)
+
+ALTER TABLE employee
+DROP COLUMN phone 
+
+
+
+
+
