@@ -341,3 +341,18 @@ EXEC sp_rename
 'employee', 'staff'
 
 SELECT * FROM staff
+
+-- Adding Constraints --
+
+EXEC sp_help 'employee'
+
+ALTER TABLE employee
+ADD CONSTRAINT default_dept DEFAULT 'Trainee'
+FOR department
+
+INSERT INTO employee
+(fname, lname, email, job_title, city)
+VALUES
+('Paul', 'Philip', 'paul.philip@example.com', 'Fresher', 'Mumbai')
+
+SELECT * FROM employee
