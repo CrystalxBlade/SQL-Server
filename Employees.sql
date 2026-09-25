@@ -356,3 +356,19 @@ VALUES
 ('Paul', 'Philip', 'paul.philip@example.com', 'Fresher', 'Mumbai')
 
 SELECT * FROM employee
+
+
+-- Check Constraints -- 
+
+INSERT INTO employee 
+(fname, lname, email, job_title, salary, city)
+VALUES
+('Alex', 'Jhon', 'alex.jhon@example', 'Fresher', -10000, 'Mumbai')
+
+-- if you've already created the table then CONSTRAINT CHECK might not work so 
+-- do the clean up before executing the constraint or apply it in the starting when your 
+-- creating the table 
+
+ALTER TABLE employee 
+ADD CONSTRAINT chk_emp_pos_sal CHECK (salary > 0)
+
