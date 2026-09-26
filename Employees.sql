@@ -363,7 +363,7 @@ SELECT * FROM employee
 INSERT INTO employee 
 (fname, lname, email, job_title, salary, city)
 VALUES
-('Alex', 'Jhon', 'alex.jhon@example', 'Fresher', -10000, 'Mumbai')
+('Alex', 'Jhon', 'alex.jhon@example.com', 'Fresher', -10000, 'Mumbai')
 
 -- if you've already created the table then CONSTRAINT CHECK might not work so 
 -- do the clean up before executing the constraint or apply it in the starting when your 
@@ -372,3 +372,12 @@ VALUES
 ALTER TABLE employee 
 ADD CONSTRAINT chk_emp_pos_sal CHECK (salary > 0)
 
+ALTER TABLE employee
+DROP CONSTRAINT chk_emp_pos_sal 
+
+ALTER TABLE employee
+ADD CONSTRAINT chk_valid_email CHECK (email LIKE '%@%.%')
+
+DELETE FROM employee WHERE salary < 0
+
+SELECT * FROM employee
