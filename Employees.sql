@@ -403,7 +403,7 @@ CREATE TABLE Orders (
        FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) 
 );
 
-EXEC sp_help 'orders'
+EXEC sp_help 'Orders'
 
 
 INSERT INTO Customers(customer_name, email)
@@ -421,3 +421,24 @@ VALUES
 ('2025-10-12', 500.00, 102),      -- This links to Baburao (customer_id 102)
 ('2025-10-17', 1200.00, 101);     -- New order for Sham (customer_id 101)
 
+
+SELECT * FROM Customers
+SELECT * FROM Orders
+
+INSERT INTO Customers (customer_name, email)
+VALUES ('Paul', 'paul@example.com')
+
+INSERT INTO Orders (order_date, total_amount)
+VALUES ('2025-10-18', '3500')
+
+
+
+-------------------------------------------------------------------------------
+
+-- JOINS
+
+
+-- Cross Join
+
+SELECT * FROM
+Customers CROSS JOIN Orders
