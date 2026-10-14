@@ -440,5 +440,18 @@ VALUES ('2025-10-18', '3500')
 
 -- Cross Join
 
+SELECT * FROM Customers c1 CROSS JOIN Orders o1
+
 SELECT * FROM
 Customers CROSS JOIN Orders
+
+-- Inner Join
+
+SELECT * FROM 
+Customers c1 INNER JOIN Orders o1
+ON 
+c1.customer_id = o1.customer_id
+
+SELECT * FROM 
+Customers INNER JOIN Orders ON
+Customers.customer_id = Orders.customer_id
