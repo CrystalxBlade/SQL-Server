@@ -445,6 +445,7 @@ SELECT * FROM Customers c1 CROSS JOIN Orders o1
 SELECT * FROM
 Customers CROSS JOIN Orders
 
+
 -- Inner Join --
 
 SELECT * FROM 
@@ -463,6 +464,7 @@ ON
 c.customer_id = o.customer_id
 GROUP BY c.customer_name
 
+
 -- Left Join --
 
 SELECT * FROM 
@@ -473,6 +475,20 @@ c.customer_id = o.customer_id
 
 SELECT c.customer_name, COUNT(o.order_id), SUM(o.total_amount) FROM
 Customers c LEFT JOIN Orders o
+ON
+c.customer_id = o.customer_id
+GROUP BY c.customer_name
+
+
+-- Right Join -- 
+
+SELECT * FROM 
+Customers c RIGHT JOIN Orders o
+ON
+c.customer_id = o.customer_id
+
+SELECT c.customer_name, COUNT(o.order_id), SUM(o.total_amount) FROM
+Customers c RIGHT JOIN Orders o
 ON
 c.customer_id = o.customer_id
 GROUP BY c.customer_name
