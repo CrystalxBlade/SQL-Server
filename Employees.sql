@@ -438,14 +438,14 @@ VALUES ('2025-10-18', '3500')
 -- JOINS
 
 
--- Cross Join
+-- Cross Join --
 
 SELECT * FROM Customers c1 CROSS JOIN Orders o1
 
 SELECT * FROM
 Customers CROSS JOIN Orders
 
--- Inner Join
+-- Inner Join --
 
 SELECT * FROM 
 Customers c1 INNER JOIN Orders o1
@@ -455,3 +455,24 @@ c1.customer_id = o1.customer_id
 SELECT * FROM 
 Customers INNER JOIN Orders ON
 Customers.customer_id = Orders.customer_id
+
+
+SELECT c.customer_name, COUNT(o.order_id), SUM(o.total_amount) FROM 
+Customers c INNER JOIN Orders o
+ON
+c.customer_id = o.customer_id
+GROUP BY c.customer_name
+
+-- Left Join --
+
+SELECT * FROM 
+Customers c LEFT JOIN Orders o
+ON
+c.customer_id = o.customer_id
+
+
+SELECT c.customer_name, COUNT(o.order_id), SUM(o.total_amount) FROM
+Customers c LEFT JOIN Orders o
+ON
+c.customer_id = o.customer_id
+GROUP BY c.customer_name
