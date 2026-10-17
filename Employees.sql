@@ -492,3 +492,15 @@ Customers c RIGHT JOIN Orders o
 ON
 c.customer_id = o.customer_id
 GROUP BY c.customer_name
+
+
+-- Full Outer Join --
+
+SELECT * FROM
+Customers c FULL OUTER JOIN Orders o
+ON 
+c.customer_id = o.customer_id
+
+
+
+
