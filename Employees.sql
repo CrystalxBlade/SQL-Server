@@ -502,5 +502,5 @@ ON
 c.customer_id = o.customer_id
 
 
-
+-- Window Function -- 
 
