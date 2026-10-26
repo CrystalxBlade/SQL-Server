@@ -35,5 +35,18 @@ Returns matching rows plus unmatched rows from both tables.
 ## CROSS JOIN
 Produces every possible combination of rows from both tables.
 
+## SELF JOIN
+A Self Join means joining a table to itself.
+
+For example, imagine your employee table has a manager_id column that refers to another employee's emp_id.
+```
+SELECT
+    e.fname AS employee_name,
+    m.fname AS manager_name
+FROM employee e
+LEFT JOIN employee m
+    ON e.manager_id = m.emp_id;
+```
+
 ## Important
 `ON` specifies **how the rows from the tables are related**.
