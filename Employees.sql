@@ -504,4 +504,84 @@ c.customer_id = o.customer_id
 
 -- SELF JOIN --
 
+CREATE DATABASE bank_db
 
+CREATE TABLE CompanyHierarchy(
+EmployeeID INT PRIMARY KEY,
+Name VARCHAR(100),
+ManagerID INT
+);
+
+INSERT INTO CompanyHierarchy(EmployeeID, Name, ManagerID)
+VALUES
+(1, 'Sonia Verma', NULL), -- The CEO
+(2, 'Rohan Gupta', 1),    -- Reports to Sonia
+(3, 'Amit Sharma', 2),    -- Reports to Rohan
+(4, 'Priya Singh', 1),    -- Reports to Sonia
+(5, 'Kabir Shah', 2);     -- Reports to Rohan
+
+SELECT
+e.Name AS EmployeeName,
+m.Name AS ManagerName
+FROM CompanyHierarchy AS e
+LEFT JOIN
+CompanyHierarchy AS m
+ON e.ManagerID = m.EmployeeID
+
+-------------------------------------------------------------------------------
+
+-- MANY TO MANY --
+
+CREATE DATABASE institute
+USE institute
+
+CREATE TABLE courses(
+course_id INT IDENTITY(1,1) PRIMARY KEY,
+course_name VARCHAR(100) NOT NULL,
+course_fee NUMERIC(10,2) NOT NULL
+);
+
+INSERT INTO courses (course_name, course_fee)
+VALUES
+('Mathematics', 500.00),
+('Physics', 600.00),
+('Chemistry', 700.00);
+
+CREATE TABLE students(
+student_id INT IDENTITY(1,1) PRIMARY KEY,
+student_name VARCHAR(100) NOT NULL
+);
+
+INSERT INTO students(student_name)
+VALUES
+('Raju'),
+('Sham'),
+('Baburao'),
+('Alex');
+
+SELECT * FROM students
+SELECT * FROM courses
+
+
+CREATE TABLE enrollment(
+erollment_id INT IDENTITY(1,1) PRIMARY KEY,
+student_id INT NOT NULL,
+course_id INT NOT NULL,
+enrollment_date DATE NOT NULL,
+
+FOREIGN KEY (student_id) REFERENCES students(student_id),
+FOREIGN KEY (course_id) REFERENCES courses(course_id),
+);
+
+INSERT INTO enrollment (student_id, course_id, enrollment_date)
+VALUES
+(1,1, '2025-01-01'), -- Raju enrolled in Mathematics
+(1,2, '2025-01-15'), -- Raju enrolled in Physics
+(2,1, '2025-02-01'), -- Sham enrolled in Mathematics
+(2,3, '2025-02-15'), -- Sham enrolled in Chemistry
+(3,3, '2025-03-25'); -- Alex enrolled in Chemistry
+
+------
+SELECT * FROM courses
+SELECT * FROM students
+SELECT * FROM enrollment
