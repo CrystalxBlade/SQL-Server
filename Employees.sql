@@ -564,13 +564,13 @@ SELECT * FROM courses
 
 
 CREATE TABLE enrollment(
-erollment_id INT IDENTITY(1,1) PRIMARY KEY,
+enrollment_id INT IDENTITY(1,1) PRIMARY KEY,
 student_id INT NOT NULL,
 course_id INT NOT NULL,
 enrollment_date DATE NOT NULL,
 
 FOREIGN KEY (student_id) REFERENCES students(student_id),
-FOREIGN KEY (course_id) REFERENCES courses(course_id),
+FOREIGN KEY (course_id) REFERENCES courses(course_id)
 );
 
 INSERT INTO enrollment (student_id, course_id, enrollment_date)
@@ -579,9 +579,22 @@ VALUES
 (1,2, '2025-01-15'), -- Raju enrolled in Physics
 (2,1, '2025-02-01'), -- Sham enrolled in Mathematics
 (2,3, '2025-02-15'), -- Sham enrolled in Chemistry
-(3,3, '2025-03-25'); -- Alex enrolled in Chemistry
+(3,3, '2025-03-25'); -- Baburao enrolled in Chemistry
 
 ------
 SELECT * FROM courses
 SELECT * FROM students
 SELECT * FROM enrollment
+
+
+SELECT s.student_name, c.course_name, e.enrollment_date, c.course_fee 
+FROM enrollment e
+INNER JOIN students s ON e.student_id = s.student_id
+INNER JOIN courses c ON e.course_id = c.course_id
+
+
+SELECT c.course_name, COUNT(s.student_id), SUM(c.course_fee)
+FROM enrollment e
+INNER JOIN students s ON e.student_id = s.student_id
+INNER JOIN courses c ON e.course_id = c.course_id
+GROUP BY c.course_name
