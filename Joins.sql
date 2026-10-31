@@ -207,3 +207,62 @@ ON t1.manager_id = t2.emp_id
    so no one is at the top. In real data the top person has a NULL manager.
 
 */
+
+
+                   ----------------- UNION -----------------
+
+CREATE TABLE custA(
+cust_name VARCHAR(30),
+cust_amount BIGINT
+)
+
+INSERT INTO custA VALUES
+('Blade', 2100),
+('Hornet', 1200),
+('Knight', 5000)
+
+CREATE TABLE custB(
+cust_name VARCHAR(30),
+cust_amount BIGINT
+)
+
+INSERT INTO custB VALUES
+('Crystal', 1500),
+('Blade', 2100);
+
+/*
+
+UNION combines the results of two or more SELECT queries into a single result set and removes 
+duplicate rows. UNION ALL does the same but keeps duplicates.
+
+*/
+
+SELECT cust_name, cust_amount
+FROM custA
+UNION
+SELECT cust_name, cust_amount
+FROM custB
+
+
+
+SELECT cust_name, cust_amount
+FROM custA
+UNION ALL
+SELECT cust_name, cust_amount
+FROM custB
+
+
+----- Rules
+
+-- Both queries must return the same number of columns.
+-- The matching columns must have compatible data types.
+-- The column names in the result come from the first query.
+-- UNION is not a join. It stacks rows from one query on top of the other, while a join places columns side by side.
+
+
+----- Key points
+
+-- UNION stacks the results of two queries vertically.
+-- Duplicate rows are compared across all selected columns, so a row is a duplicate only if every column matches.
+-- Use UNION ALL when duplicates don't matter, because it is faster.
+-- Column count and data types must match in every query.
