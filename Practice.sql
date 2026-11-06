@@ -67,7 +67,39 @@ VALUES
     (3, 4, 5),  -- Paul ordered 5 Cables
     (4, 3, 1);  -- Sham ordered 1 Keyboard
 
+
+
 SELECT * FROM customers
 SELECT * FROM orders
 SELECT * FROM products
 SELECT * FROM order_items
+
+
+
+SELECT c.cust_name, o.ord_id, p.p_name, o.ord_date, p.price, oi.quantity,
+oi.quantity * p.price as Total
+
+FROM order_items oi
+JOIN products p ON oi.p_id = p.p_id
+JOIN orders o ON o.ord_id = oi.ord_id
+RIGHT JOIN customers c ON c.cust_id = o.cust_id
+
+
+SELECT c.cust_name, COUNT(DISTINCT o.ord_id) as items
+
+FROM order_items oi
+JOIN products p ON p.p_id = oi.p_id
+JOIN orders o ON o.ord_id = oi.ord_id
+JOIN customers c ON c.cust_id = o.cust_id
+GROUP BY c.cust_name
+
+
+SELECT c.cust_name, COUNT(o.ord_id) as orders, 
+SUM(oi.quantity) as total_quantity
+
+FROM order_items oi
+JOIN orders o ON o.ord_id = oi.ord_id
+JOIN customers c ON c.cust_id = o.cust_id
+GROUP BY c.cust_name
+
+
