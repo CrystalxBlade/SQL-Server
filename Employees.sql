@@ -587,14 +587,29 @@ SELECT * FROM students
 SELECT * FROM enrollment
 
 
+/*
 SELECT s.student_name, c.course_name, e.enrollment_date, c.course_fee 
 FROM enrollment e
 INNER JOIN students s ON e.student_id = s.student_id
 INNER JOIN courses c ON e.course_id = c.course_id
-
+*/
 
 SELECT c.course_name, COUNT(s.student_id), SUM(c.course_fee)
 FROM enrollment e
 INNER JOIN students s ON e.student_id = s.student_id
 INNER JOIN courses c ON e.course_id = c.course_id
 GROUP BY c.course_name
+
+-------------------------------------------------------------------------------
+
+-- VIEWS --
+
+CREATE VIEW enrollment_details AS 
+SELECT s.student_name, c.course_name, e.enrollment_date, c.course_fee 
+FROM enrollment e
+INNER JOIN students s ON e.student_id = s.student_id
+INNER JOIN courses c ON e.course_id = c.course_id
+
+SELECT * FROM enrollment_details
+
+

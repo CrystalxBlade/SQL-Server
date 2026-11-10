@@ -103,3 +103,13 @@ JOIN customers c ON c.cust_id = o.cust_id
 GROUP BY c.cust_name
 
 
+SELECT o.ord_date,
+       SUM(oi.quantity * p.price)  AS total_shopping_amount,
+       SUM(oi.quantity)            AS units_sold,
+       COUNT(DISTINCT oi.p_id)     AS different_products_sold,
+       COUNT(DISTINCT o.cust_id)   AS customers_purchased
+FROM orders o
+JOIN order_items oi ON oi.ord_id = o.ord_id
+JOIN products p     ON p.p_id = oi.p_id
+GROUP BY o.ord_date
+ORDER BY o.ord_date;
