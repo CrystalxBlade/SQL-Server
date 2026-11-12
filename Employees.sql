@@ -528,6 +528,7 @@ LEFT JOIN
 CompanyHierarchy AS m
 ON e.ManagerID = m.EmployeeID
 
+
 -------------------------------------------------------------------------------
 
 -- MANY TO MANY --
@@ -612,4 +613,50 @@ INNER JOIN courses c ON e.course_id = c.course_id
 
 SELECT * FROM enrollment_details
 
+
+-------------------------------------------------------------------------------
+
+-- Window Functions --
+
+
+CREATE DATABASE Company_DB
+
+
+CREATE TABLE staff
+(
+    emp_id     INT IDENTITY(201,1) PRIMARY KEY,
+    fname      VARCHAR(50)  NOT NULL,
+    lname      VARCHAR(50)  NOT NULL,
+    email      VARCHAR(100) NOT NULL UNIQUE,
+    job_title  VARCHAR(50)  NOT NULL,
+    department VARCHAR(50),
+    salary     DECIMAL(10,2) DEFAULT 30000.00,
+    hire_date  DATE NOT NULL DEFAULT CONVERT(date, GETDATE()),
+    city       VARCHAR(50)
+);
+
+
+INSERT INTO staff
+(fname, lname, email, job_title, department, salary, hire_date, city)
+VALUES
+('Meera',  'Iyer',    'meera.iyer@example.com',    'Operations Manager', 'Operations', 98000,  '2020-01-20', 'Chennai'),
+('Rahul',  'Bose',    'rahul.bose@example.com',    'Backend Developer',  'Tech',       92000,  '2021-09-06', 'Kolkata'),
+('Tara',   'Menon',   'tara.menon@example.com',    'QA Engineer',        'Tech',       72000,  '2022-03-14', 'Kochi'),
+('Yash',   'Malhotra','yash.malhotra@example.com', 'Accountant',         'Finance',    68000,  '2019-12-02', 'Delhi'),
+('Lakshmi','Pillai',  'lakshmi.pillai@example.com','Finance Manager',    'Finance',    110000, '2018-07-25', 'Chennai'),
+('Dev',    'Chopra',  'dev.chopra@example.com',    'Sales Executive',    'Sales',      76000,  '2023-04-10', 'Jaipur'),
+('Pooja',  'Bhatt',   'pooja.bhatt@example.com',   'UI Designer',        'Design',     84000,  '2022-08-29', 'Ahmedabad'),
+('Karan',  'Thakur',  'karan.thakur@example.com',  'Support Engineer',   'Support',    60000,  '2024-01-15', 'Pune');
+
+
+SELECT fname, salary, 
+SUM(salary) OVER() 
+as total_sal FROM staff
+
+
+
+SELECT fname, salary,
+SUM(salary) OVER() as total_sal,
+CAST(salary*100 / SUM(salary) OVER() AS DECIMAL(10,2))
+FROM staff
 
