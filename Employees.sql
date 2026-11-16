@@ -654,9 +654,43 @@ SUM(salary) OVER()
 as total_sal FROM staff
 
 
-
 SELECT fname, salary,
 SUM(salary) OVER() as total_sal,
 CAST(salary*100 / SUM(salary) OVER() AS DECIMAL(10,2))
 FROM staff
+
+
+-- PARTITION BY --
+
+SELECT fname, department, salary,
+SUM(salary) OVER(PARTITION BY department)
+FROM staff
+
+
+-- ROW_NUMBER --
+
+SELECT 
+   ROW_NUMBER() OVER(ORDER BY fname) as row_num,
+   fname, department, salary
+   FROM staff
+
+
+-- RANK --
+
+UPDATE staff 
+set salary = 110000
+WHERE fname = 'Pooja'
+
+
+SELECT fname, department, salary,
+RANK() OVER(ORDER BY salary DESC)
+FROM staff
+
+
+-- DENSE_RANK --
+
+SELECT fname, department, salary,
+DENSE_RANK() OVER(ORDER BY salary DESC)
+FROM staff
+
 
