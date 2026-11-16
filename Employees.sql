@@ -694,3 +694,18 @@ DENSE_RANK() OVER(ORDER BY salary DESC)
 FROM staff
 
 
+-- LAG --
+
+SELECT fname, department, salary,
+LAG(salary) OVER(ORDER BY salary DESC) 
+FROM staff
+
+
+-- LEAD --
+
+SELECT fname, department, salary,
+LEAD(salary) OVER(ORDER BY salary DESC) 
+FROM staff
+
+
+
