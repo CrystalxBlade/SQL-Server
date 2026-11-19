@@ -39,3 +39,34 @@
 */
 
 
+CREATE DATABASE Earth
+
+
+CREATE TABLE test_data
+(
+    new_id  INT,
+    new_cat VARCHAR(20)
+);
+
+INSERT INTO test_data (new_id, new_cat) VALUES
+(100, 'Agni'),
+(200, 'Agni'),
+(500, 'Dharti'),
+(700, 'Dharti'),
+(200, 'Vayu'),
+(300, 'Vayu'),
+(500, 'Vayu');
+
+
+SELECT new_id, new_cat,
+
+       SUM(new_id)       OVER (PARTITION BY new_cat) AS [Total],
+       AVG(new_id * 1.0) OVER (PARTITION BY new_cat) AS [Average],
+       COUNT(new_id)     OVER (PARTITION BY new_cat) AS [Count],
+       MIN(new_id)       OVER (PARTITION BY new_cat) AS [Min],
+       MAX(new_id)       OVER (PARTITION BY new_cat) AS [Max]
+FROM test_data
+ORDER BY new_cat, new_id;
+
+
+
