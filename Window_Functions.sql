@@ -70,3 +70,36 @@ ORDER BY new_cat, new_id;
 
 
 
+
+SELECT new_id, new_cat,
+       SUM(new_id) OVER (ORDER BY new_id
+           ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS [Total],
+       AVG(new_id * 1.0) OVER (ORDER BY new_id
+           ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS [Average],
+       COUNT(new_id) OVER (ORDER BY new_id
+           ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS [Count],
+       MIN(new_id) OVER (ORDER BY new_id
+           ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS [Min],
+       MAX(new_id) OVER (ORDER BY new_id
+           ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS [Max]
+FROM test_data;
+
+
+
+
+SELECT new_id,
+ROW_NUMBER() OVER (ORDER BY new_id) AS [ROW_NUMBER],
+RANK() OVER (ORDER BY new_id) AS [RANK],
+DENSE_RANK() OVER (ORDER BY new_id) AS [DENSE_RANK],
+PERCENT_RANK() OVER (ORDER BY new_id) AS [PERCENT_RANK]
+FROM test_data
+
+
+
+
+
+
+
+
+
+
