@@ -58,6 +58,10 @@ INSERT INTO test_data (new_id, new_cat) VALUES
 (500, 'Vayu');
 
 
+
+--------------     Aggregate Functions     --------------
+
+
 SELECT new_id, new_cat,
 
        SUM(new_id)       OVER (PARTITION BY new_cat) AS [Total],
@@ -69,6 +73,10 @@ FROM test_data
 ORDER BY new_cat, new_id;
 
 
+/* 
+   ROWS between unbounded preceding and unbounded  following which will give  
+   a single output based on all input values/partition (if used)
+*/
 
 
 SELECT new_id, new_cat,
@@ -85,6 +93,7 @@ SELECT new_id, new_cat,
 FROM test_data;
 
 
+--------------     Ranking Functions     --------------
 
 
 SELECT new_id,
@@ -95,11 +104,19 @@ PERCENT_RANK() OVER (ORDER BY new_id) AS [PERCENT_RANK]
 FROM test_data
 
 
+--------------     Aanalytic Functions     --------------
+
+/*
+If u just want the single last value from whole column,
+*/
 
 
-
-
-
+SELECT new_id,
+FIRST_VALUE(new_id) OVER(ORDER BY new_id) AS "FIRST_VALUE",
+LAST_VALUE(new_id) OVER(ORDER BY new_id) AS "LAST_VALUE",
+LEAD(new_id) OVER(ORDER BY new_id) AS "LEAD",
+LAG(new_id) OVER(ORDER BY new_id) AS "LAG"
+FROM test_data
 
 
 
