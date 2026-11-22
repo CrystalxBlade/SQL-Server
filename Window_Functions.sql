@@ -107,7 +107,10 @@ FROM test_data
 --------------     Aanalytic Functions     --------------
 
 /*
-If u just want the single last value from whole column,
+
+If u just want the single last value from whole column, use: 
+ROWS between unbound preceding and unbound following
+
 */
 
 

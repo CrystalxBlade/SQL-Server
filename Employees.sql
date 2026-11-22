@@ -709,3 +709,18 @@ FROM staff
 
 
 
+SELECT fname, hire_date, salary,
+LAG(salary) OVER(ORDER BY hire_date)
+FROM staff
+
+
+
+SELECT fname, hire_date, salary,
+LAG(salary) OVER(ORDER BY hire_date),
+salary - LAG(salary) OVER(ORDER BY hire_date) as differ
+FROM staff
+
+
+SELECT fname, department, salary,
+DENSE_RANK() OVER(PARTITION BY department ORDER BY salary DESC) as [RANK]
+FROM staff
