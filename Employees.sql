@@ -714,6 +714,7 @@ LAG(salary) OVER(ORDER BY hire_date)
 FROM staff
 
 
+-- Use Cases
 
 SELECT fname, hire_date, salary,
 LAG(salary) OVER(ORDER BY hire_date),
@@ -724,3 +725,12 @@ FROM staff
 SELECT fname, department, salary,
 DENSE_RANK() OVER(PARTITION BY department ORDER BY salary DESC) as [RANK]
 FROM staff
+
+
+SELECT fname, salary,
+SUM(salary) OVER(PARTITION BY department ORDER BY salary, emp_id DESC)
+FROM staff
+
+
+
+
