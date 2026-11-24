@@ -727,9 +727,21 @@ DENSE_RANK() OVER(PARTITION BY department ORDER BY salary DESC) as [RANK]
 FROM staff
 
 
-SELECT fname, salary,
+-- Running Total --
+SELECT fname, department, salary,
 SUM(salary) OVER(PARTITION BY department ORDER BY salary, emp_id DESC)
 FROM staff
+
+
+-- ROWS BETWEEN --
+
+SELECT fname, department, salary,
+SUM(salary) OVER(
+ORDER BY salary DESC ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+) as running_total
+FROM staff
+
+
 
 
 
